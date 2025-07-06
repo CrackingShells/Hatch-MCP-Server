@@ -3,7 +3,6 @@ import inspect
 import logging
 from typing import Optional
 from mcp.server.fastmcp import FastMCP
-from hatchling.core.logging.logging_manager import logging_manager
 
 class HatchMCP():
     """Base wrapper for MCP servers with citation capabilities."""
@@ -20,10 +19,7 @@ class HatchMCP():
             mcp_citation (str, optional): Citation information for the MCP server implementation. Defaults to None.
         """
         # Initialize the logger
-        self.logger = logging_manager.get_session(
-            f"HatchMCP_{name}",
-            formatter=logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
-        )
+        self.logger = logging.getLogger("hatch_mcp_server.HatchMCP")
 
         # Create the underlying FastMCP server
         self.server = FastMCP(name, log_level="WARNING")
