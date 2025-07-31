@@ -8,7 +8,8 @@ class HatchMCP():
     """Base wrapper for MCP servers with citation capabilities."""
     
     def __init__(self, 
-                 name: str, 
+                 name: str,
+                 fast_mcp: Optional[FastMCP] = None,
                  origin_citation: Optional[str] = None, 
                  mcp_citation: Optional[str] = None):
         """Initialize the HatchMCP wrapper.
@@ -22,7 +23,7 @@ class HatchMCP():
         self.logger = logging.getLogger("hatch_mcp_server.HatchMCP")
 
         # Create the underlying FastMCP server
-        self.server = FastMCP(name, log_level="WARNING")
+        self.server = fast_mcp or FastMCP(name, log_level="WARNING")
         self.name = name
         self.module_name = "" #the file name of the calling module
         
