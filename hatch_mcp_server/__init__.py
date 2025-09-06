@@ -8,7 +8,7 @@ relevant to the Hatch ecosystem. This includes:
 
 """
 
-__version__ = "0.2.0"
+__version__ = "0.3.0"
 
 from .hatch_mcp import HatchMCP
 
